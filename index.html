@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oberdorfer Group — Digital Platform Game Plan (2026)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F7F8F6;
+  --surface:#FFFFFF;
+  --ink:#1D2A31;
+  --ink-soft:#4A5A62;
+  --line:#D9DFDC;
+  --line-soft:#E9EDEB;
+  --pine:#2F5D4E;
+  --pine-tint:#E3EEE9;
+  --harbor:#2B5577;
+  --harbor-tint:#E2ECF4;
+  --amber:#8A5A12;
+  --amber-tint:#FBF0DC;
+  --brick:#8E3B2F;
+  --brick-tint:#F7E4E0;
+  --serif:"Newsreader", Georgia, "Times New Roman", serif;
+  --sans:"Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--harbor)}
+:focus-visible{outline:3px solid var(--harbor);outline-offset:2px;border-radius:2px}
+
+/* Layout */
+.shell{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1320px;margin:0 auto}
+nav.toc{position:sticky;top:0;height:100vh;overflow-y:auto;padding:32px 20px 40px 28px;border-right:1px solid var(--line)}
+.toc .brand{font-family:var(--serif);font-size:1.15rem;font-weight:600;line-height:1.25;margin:0 0 4px}
+.toc .sub{font-size:.8rem;color:var(--ink-soft);margin:0 0 24px}
+.toc h4{font-size:.78rem;font-weight:600;color:var(--ink-soft);margin:22px 0 6px;letter-spacing:.01em}
+.toc ol{list-style:none;margin:0;padding:0}
+.toc a{display:block;padding:5px 10px;margin-left:-10px;font-size:.9rem;color:var(--ink);text-decoration:none;border-left:2px solid transparent;border-radius:0 4px 4px 0}
+.toc a:hover{background:var(--line-soft)}
+.toc a.active{border-left-color:var(--pine);background:var(--pine-tint);color:var(--pine);font-weight:600}
+main{padding:0 56px 120px}
+.mobile-nav{display:none}
+
+/* Hero */
+header.hero{padding:64px 0 40px;border-bottom:1px solid var(--line);max-width:980px}
+.hero .meta{font-size:.9rem;color:var(--ink-soft);margin:0 0 18px}
+.hero h1{font-family:var(--serif);font-weight:500;font-size:clamp(2.2rem,4.4vw,3.5rem);line-height:1.08;margin:0 0 20px;letter-spacing:-.01em;max-width:18ch}
+.hero .lede{font-size:1.15rem;color:var(--ink-soft);max-width:62ch;margin:0 0 32px}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:.88rem;color:var(--ink-soft);align-items:center}
+
+/* Key decision */
+.decision{margin:40px 0 0;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.decision .q{padding:22px 28px;border-bottom:1px solid var(--line);font-family:var(--serif);font-size:1.35rem;line-height:1.3}
+.decision .q small{display:block;font-family:var(--sans);font-size:.88rem;color:var(--ink-soft);margin-top:6px}
+.decision .paths{display:grid;grid-template-columns:1fr 1fr}
+.path{padding:24px 28px}
+.path + .path{border-left:1px solid var(--line)}
+.path .price{font-family:var(--serif);font-size:2.6rem;line-height:1;margin:0 0 4px}
+.path .price span{font-size:1rem;font-family:var(--sans);color:var(--ink-soft)}
+.path h3{margin:0 0 10px;font-size:1rem}
+.path ul{margin:0;padding-left:18px;font-size:.93rem}
+.path.good{background:linear-gradient(0deg,var(--pine-tint),var(--pine-tint)) top/100% 5px no-repeat}
+.path.alt{background:linear-gradient(0deg,var(--line),var(--line)) top/100% 5px no-repeat}
+
+/* Sections */
+section{padding:64px 0 8px;max-width:980px}
+section > h2{font-family:var(--serif);font-weight:500;font-size:2rem;line-height:1.15;margin:0 0 8px}
+section > .intro{color:var(--ink-soft);font-size:1.05rem;max-width:64ch;margin:0 0 28px}
+h3{font-size:1.08rem;margin:36px 0 12px;line-height:1.3}
+p,li{max-width:72ch}
+ul.clean{padding-left:20px}
+ul.clean li{margin-bottom:8px}
+.num{font-family:var(--serif);color:var(--ink-soft);font-size:1.1rem;margin-right:10px}
+
+/* Tags */
+.tag{display:inline-block;font-size:.74rem;font-weight:600;padding:2px 8px;border-radius:999px;line-height:1.5;vertical-align:2px;white-space:nowrap}
+.t-ver{background:var(--harbor-tint);color:var(--harbor)}
+.t-rec{background:var(--pine-tint);color:var(--pine)}
+.t-conf{background:var(--amber-tint);color:var(--amber)}
+.t-risk{background:var(--brick-tint);color:var(--brick)}
+
+/* Callouts */
+.callout{border-left:4px solid var(--harbor);background:var(--surface);padding:16px 22px;margin:22px 0;border-radius:0 8px 8px 0}
+.callout p{margin:0 0 8px}.callout p:last-child{margin:0}
+.callout.rec{border-color:var(--pine)}
+.callout.conf{border-color:var(--amber);background:#FFFCF5}
+.callout.risk{border-color:var(--brick);background:#FFF9F8}
+.callout strong.h{display:block;margin-bottom:4px}
+
+/* Tables */
+.table-wrap{overflow-x:auto;margin:18px 0 8px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem;line-height:1.45}
+th,td{text-align:left;padding:11px 14px;vertical-align:top;border-bottom:1px solid var(--line-soft)}
+thead th{background:#F0F3F1;font-weight:600;font-size:.84rem;color:var(--ink-soft);border-bottom:1px solid var(--line);white-space:nowrap}
+tbody tr:last-child td{border-bottom:0}
+td:first-child{font-weight:600}
+tr.pick td{background:#F4F9F6}
+.pill{display:inline-block;font-size:.76rem;font-weight:700;padding:2px 9px;border-radius:4px}
+.p-build{background:var(--pine);color:#fff}
+.p-buy{background:var(--harbor);color:#fff}
+.p-int{background:var(--harbor-tint);color:var(--harbor)}
+.p-defer{background:var(--line-soft);color:var(--ink-soft)}
+
+/* Two-col */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:18px 0}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px 22px}
+.panel h4{margin:0 0 8px;font-size:1rem}
+.panel ul{margin:0;padding-left:18px;font-size:.93rem}
+.panel li{margin-bottom:5px}
+
+/* Flow */
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0 6px;padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.flow span{background:var(--paper);border:1px solid var(--line);padding:6px 12px;border-radius:6px;font-size:.88rem;font-weight:500}
+.flow span.own{background:var(--pine-tint);border-color:#BCD5CA;color:var(--pine)}
+.flow i{font-style:normal;color:var(--ink-soft)}
+.flow-key{font-size:.84rem;color:var(--ink-soft);margin:0}
+
+pre.tree{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:18px 22px;font-size:.88rem;line-height:1.7;overflow-x:auto;font-family:ui-monospace,Menlo,Consolas,monospace}
+
+/* Steps / workflow */
+.steps{list-style:none;padding:0;margin:18px 0;counter-reset:s}
+.steps li{position:relative;padding:12px 16px 12px 56px;border-bottom:1px solid var(--line-soft);max-width:none}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:14px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--surface);border:1px solid var(--line);display:grid;place-items:center;font-size:.82rem;font-weight:600}
+.steps li .tag{margin-left:8px}
+
+/* Costs */
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:20px 0}
+.tier{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:22px}
+.tier.mid{border-color:var(--pine);box-shadow:inset 0 4px 0 var(--pine)}
+.tier h4{margin:0 0 2px;font-size:1.02rem}
+.tier .amt{font-family:var(--serif);font-size:2rem;line-height:1.1;margin:10px 0 2px}
+.tier .yr{font-size:.86rem;color:var(--ink-soft);margin:0 0 14px}
+.tier ul{padding-left:18px;margin:0;font-size:.88rem}
+.tier li{margin-bottom:4px}
+
+/* Roadmap */
+.road{list-style:none;padding:0;margin:20px 0;position:relative}
+.road::before{content:"";position:absolute;left:19px;top:8px;bottom:8px;width:2px;background:var(--line)}
+.road li{position:relative;padding:0 0 22px 60px;max-width:none}
+.road .n{position:absolute;left:0;top:0;width:40px;height:40px;border-radius:50%;background:var(--surface);border:2px solid var(--pine);display:grid;place-items:center;font-weight:700;font-size:.9rem;color:var(--pine)}
+.road li.crit .n{background:var(--pine);color:#fff}
+.road h4{margin:6px 0 2px;font-size:1rem}
+.road p{margin:0;font-size:.93rem;color:var(--ink-soft)}
+.effort{font-size:.78rem;font-weight:600;color:var(--ink-soft);margin-left:6px}
+
+/* Questions */
+.qtools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin:10px 0 18px;padding:12px 16px;background:var(--surface);border:1px solid var(--line);border-radius:8px;font-size:.9rem}
+.qtools label{display:flex;gap:8px;align-items:center;cursor:pointer}
+.progress{font-weight:600}
+.qgroup{margin:0 0 22px}
+.qgroup h4{margin:0 0 6px;font-size:.95rem;color:var(--pine)}
+.qlist{list-style:none;padding:0;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:8px}
+.qlist li{border-bottom:1px solid var(--line-soft);max-width:none}
+.qlist li:last-child{border-bottom:0}
+.qlist label{display:flex;gap:12px;padding:11px 16px;cursor:pointer;align-items:flex-start;font-size:.95rem}
+.qlist input{margin-top:5px;width:17px;height:17px;accent-color:var(--pine);flex:none}
+.qlist input:checked + span{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--line)}
+body.must-only .qlist li:not(.must){display:none}
+body.must-only .qgroup:not(:has(li.must)){display:none}
+
+.closing{background:var(--ink);color:#EEF2F0;border-radius:12px;padding:36px 40px;margin-top:20px}
+.closing h2{color:#fff}
+.closing p,.closing li{color:#D3DCD8}
+.closing strong{color:#fff}
+
+footer{max-width:980px;padding:48px 0 0;margin-top:48px;border-top:1px solid var(--line);font-size:.85rem;color:var(--ink-soft)}
+
+@media (max-width:1000px){
+  .shell{grid-template-columns:1fr}
+  nav.toc{display:none}
+  main{padding:0 22px 80px}
+  .mobile-nav{display:block;position:sticky;top:0;z-index:5;background:var(--paper);padding:10px 0;border-bottom:1px solid var(--line)}
+  .mobile-nav select{width:100%;padding:10px;font:inherit;font-size:.95rem;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+  .decision .paths,.cols,.tiers{grid-template-columns:1fr}
+  .path + .path{border-left:0;border-top:1px solid var(--line)}
+  header.hero{padding-top:36px}
+  .closing{padding:26px 22px}
+}
+@media print{
+  nav.toc,.mobile-nav,.qtools{display:none}
+  .shell{display:block}
+  main{padding:0}
+  section{page-break-inside:auto}
+  .closing{background:none;color:var(--ink);border:1px solid var(--line)}
+  .closing *{color:var(--ink)!important}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+
+<nav class="toc" aria-label="Report sections">
+  <p class="brand">Oberdorfer Group platform plan</p>
+  <p class="sub">Prepared for Jeremy · September 2026</p>
+  <h4>Start here</h4>
+  <ol>
+    <li><a href="#decision">The key decision</a></li>
+    <li><a href="#summary">Executive summary</a></li>
+    <li><a href="#meeting">Discovery questions</a></li>
+  </ol>
+  <h4>The platform</h4>
+  <ol>
+    <li><a href="#mls">MLS PIN &amp; IDX</a></li>
+    <li><a href="#architecture">Architecture</a></li>
+    <li><a href="#datamodel">WordPress data model</a></li>
+    <li><a href="#crm">CRM</a></li>
+    <li><a href="#cma">CMA &amp; home value</a></li>
+    <li><a href="#ai">AI assistant</a></li>
+    <li><a href="#hosting">Hosting, security, speed</a></li>
+  </ol>
+  <h4>Growth</h4>
+  <ol>
+    <li><a href="#seo">SEO, GEO &amp; schema</a></li>
+    <li><a href="#leads">Lead generation</a></li>
+    <li><a href="#content">Content, reviews, GBP</a></li>
+    <li><a href="#competitors">Competitors</a></li>
+  </ol>
+  <h4>Risk</h4>
+  <ol>
+    <li><a href="#compliance">Legal &amp; compliance</a></li>
+    <li><a href="#caveats">Open questions</a></li>
+  </ol>
+  <h4>Planning</h4>
+  <ol>
+    <li><a href="#buildbuy">Build vs buy</a></li>
+    <li><a href="#costs">Technology costs</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#pricing">Your pricing</a></li>
+    <li><a href="#mybuild">What I'd build</a></li>
+  </ol>
+</nav>
+
+<main>
+<div class="mobile-nav">
+  <label for="jump" class="sr" style="position:absolute;left:-9999px">Jump to section</label>
+  <select id="jump">
+    <option value="#decision">The key decision</option>
+    <option value="#summary">Executive summary</option>
+    <option value="#meeting">Discovery questions</option>
+    <option value="#mls">MLS PIN &amp; IDX</option>
+    <option value="#architecture">Architecture</option>
+    <option value="#datamodel">WordPress data model</option>
+    <option value="#crm">CRM</option>
+    <option value="#cma">CMA &amp; home value</option>
+    <option value="#ai">AI assistant</option>
+    <option value="#hosting">Hosting, security, speed</option>
+    <option value="#seo">SEO, GEO &amp; schema</option>
+    <option value="#leads">Lead generation</option>
+    <option value="#content">Content, reviews, GBP</option>
+    <option value="#competitors">Competitors</option>
+    <option value="#compliance">Legal &amp; compliance</option>
+    <option value="#caveats">Open questions</option>
+    <option value="#buildbuy">Build vs buy</option>
+    <option value="#costs">Technology costs</option>
+    <option value="#roadmap">Roadmap</option>
+    <option value="#pricing">Your pricing</option>
+    <option value="#mybuild">What I'd build</option>
+  </select>
+</div>
+
+<header class="hero" id="decision">
+  <p class="meta">Brandon &amp; Kait Oberdorfer · Central Massachusetts · Research as of September 2026</p>
+  <h1>A platform the group owns, built to grow past two agents</h1>
+  <p class="lede">WordPress holds the brand, content, SEO and agent profiles. Rented tools handle listings, CRM, CMAs and texting, connected so any one of them can be swapped out later.</p>
+  <div class="legend">
+    <span><span class="tag t-ver">Verified</span> sourced fact</span>
+    <span><span class="tag t-rec">Recommendation</span> my judgment</span>
+    <span><span class="tag t-conf">Confirm</span> needs broker or MLS sign-off</span>
+    <span><span class="tag t-risk">Risk</span> legal or compliance exposure</span>
+  </div>
+
+  <div class="decision">
+    <div class="q">Will the principal broker sign MLS PIN's Broker Data Access Agreement?
+      <small>This one answer shapes the listing-search architecture, the SEO ceiling, and the quote.</small>
+    </div>
+    <div class="paths">
+      <div class="path good">
+        <h3>Yes: brokerage feed <span class="tag t-ver">Verified</span></h3>
+        <p class="price">$100<span> / month</span></p>
+        <ul>
+          <li>Covers the main office and all branches</li>
+          <li>Brokerage gets its own RESO Web API feed via Bridge Interactive</li>
+          <li>Opens the door to a custom search with listing pages on your domain</li>
+        </ul>
+      </div>
+      <div class="path alt">
+        <h3>No: vendor access <span class="tag t-ver">Verified</span></h3>
+        <p class="price">$525<span> / month</span></p>
+        <ul>
+          <li>Charged to the vendor regardless of subscriber count</li>
+          <li>Individual agents can't hold data access themselves</li>
+          <li>Practically means a hosted IDX provider that passes costs through</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="summary">
+  <h2>Executive summary</h2>
+  <p class="intro">Three things to take into the first meeting.</p>
+
+  <h3><span class="num">1</span>Central Massachusetts runs on MLS PIN <span class="tag t-ver">Verified</span></h3>
+  <p>MLS PIN is headquartered in Shrewsbury and covers Massachusetts, Rhode Island and much of New Hampshire. The Worcester Regional Association of REALTORS is a membership group, not a separate MLS. Every listing decision follows MLS PIN's rules: active and sold listings only on public search, data refreshed at least every 3 days, a required disclaimer on every listing screen, and both listing office and agent named.</p>
+
+  <h3><span class="num">2</span>Own the compounding assets, rent the utilities <span class="tag t-rec">Recommendation</span></h3>
+  <p>Launch stack: custom WordPress on Cloudways/DigitalOcean, Showcase IDX or iHomefinder for search, Follow Up Boss as CRM, Cloud CMA for valuations, and later a guarded AI assistant. Launch tooling runs about <strong>$250–$350 a month</strong>, rising to <strong>$1,500–$3,000</strong> at the full AI and automation tier.</p>
+
+  <h3><span class="num">3</span>The team name likely needs to change <span class="tag t-risk">Risk</span></h3>
+  <p>Massachusetts doesn't legally recognize teams, and 254 CMR 3.00(9) bars team names containing words like "realty" or "real estate." Both "Oberdorfer Realty Group" and "Oberdorfer Real Estate Group" contain a restricted word. The brokerage name must also appear conspicuously on every page. Settle the name before logo, domain or design work begins.</p>
+</section>
+
+<section id="meeting">
+  <h2>Discovery meeting questions</h2>
+  <p class="intro">Thirty questions for Brandon, Kait and the principal broker. The nine marked "must answer" are the ones you need before you can give a fixed quote. Checkboxes reset when the page reloads.</p>
+
+  <div class="qtools">
+    <span class="progress" id="qprog">0 of 30 answered</span>
+    <label><input type="checkbox" id="mustonly"> Show only must-answer questions</label>
+  </div>
+
+  <div class="qgroup"><h4>Business goals &amp; ownership</h4><ul class="qlist">
+    <li><label><input type="checkbox"><span>What are the 12-month and 3-year goals for transactions and agent count?</span></label></li>
+    <li class="must"><label><input type="checkbox"><span>Who will legally own the domain and all digital assets? <span class="tag t-conf">Must answer</span></span></label></li>
+    <li class="must"><label><input type="checkbox"><span>What budget range is there for the build and for monthly tools? <span class="tag t-conf">Must answer</span></span></label></li>
+    <li class="must"><label><input type="checkbox"><span>What's the target launch date? <span class="tag t-conf">Must answer</span></span></label></li>
+  </ul></div>
+
+  <div class="qgroup"><h4>Brokerage &amp; MLS</h4><ul class="qlist">
+    <li class="must"><label><input type="checkbox"><span>Which firm is broker of record, and will it sign the MLS PIN Broker Data Access Agreement? <span class="tag t-conf">Must answer</span></span></label></li>
+    <li class="must"><label><input type="checkbox"><span>Is the brokerage already an MLS PIN subscriber? <span class="tag t-conf">Must answer</span></span></label></li>
+    <li class="must"><label><input type="checkbox"><span>Would they rather fund the $100 brokerage feed for a custom search, or use a hosted IDX? <span class="tag t-conf">Must answer</span></span></label></li>
+    <li><label><input type="checkbox"><span>Does the broker require specific tools, disclaimers or website elements?</span></label></li>
+    <li class="must"><label><input type="checkbox"><span>Has the broker approved a compliant team name, logo and domain? <span class="tag t-conf">Must answer</span></span></label></li>
+  </ul></div>
+
+  <div class="qgroup"><h4>Brand &amp; market</h4><ul class="qlist">
+    <li><label><input type="checkbox"><span>What brand assets or style direction exist today?</span></label></li>
+    <li><label><input type="checkbox"><span>Which towns and counties matter at launch, and in what order would they expand?</span></label></li>
+    <li><label><input type="checkbox"><span>Which specialties should the site lead with: first-time buyers, luxury, multifamily, investors, relocation?</span></label></li>
+  </ul></div>
+
+  <div class="qgroup"><h4>Current tools &amp; data</h4><ul class="qlist">
+    <li class="must"><label><input type="checkbox"><span>What CRM do they use now, and can its data be exported? <span class="tag t-conf">Must answer</span></span></label></li>
+    <li><label><input type="checkbox"><span>How large and how clean is their existing contact database?</span></label></li>
+    <li><label><input type="checkbox"><span>Where do leads come from today, and what do they spend on them?</span></label></li>
+    <li><label><input type="checkbox"><span>Is there an existing website or analytics history worth preserving?</span></label></li>
+  </ul></div>
+
+  <div class="qgroup"><h4>CMAs, content &amp; social</h4><ul class="qlist">
+    <li><label><input type="checkbox"><span>How do they produce CMAs now, and with which tools?</span></label></li>
+    <li><label><input type="checkbox"><span>Who will write or record content, and how often?</span></label></li>
+    <li><label><input type="checkbox"><span>Which social accounts exist, and who runs them?</span></label></li>
+  </ul></div>
+
+  <div class="qgroup"><h4>Advertising &amp; expansion</h4><ul class="qlist">
+    <li><label><input type="checkbox"><span>Do they plan paid ads on Google, Meta or Zillow?</span></label></li>
+    <li><label><input type="checkbox"><span>When, and on what criteria, would they add agents?</span></label></li>
+    <li><label><input type="checkbox"><span>Do they have partner relationships (mortgage, insurance, closing, inspection), and is any compensation involved? <span class="tag t-risk">RESPA</span></span></label></li>
+  </ul></div>
+
+  <div class="qgroup"><h4>Legal &amp; compliance</h4><ul class="qlist">
+    <li class="must"><label><input type="checkbox"><span>Will the attorney review advertising, attribution, the security program, RESPA and consent language? <span class="tag t-conf">Must answer</span></span></label></li>
+    <li><label><input type="checkbox"><span>Does the brokerage already have a written information security program under 201 CMR 17.00?</span></label></li>
+    <li><label><input type="checkbox"><span>How do they collect and record consent today?</span></label></li>
+    <li><label><input type="checkbox"><span>How comfortable are they with an AI assistant and the disclosures it needs?</span></label></li>
+  </ul></div>
+
+  <div class="qgroup"><h4>Operations</h4><ul class="qlist">
+    <li><label><input type="checkbox"><span>How fast should leads be answered, and how should they split between Brandon and Kait?</span></label></li>
+    <li><label><input type="checkbox"><span>Which channels do they prefer for follow-up: email, text or calls?</span></label></li>
+    <li><label><input type="checkbox"><span>Which reports and numbers do they want to see regularly?</span></label></li>
+    <li><label><input type="checkbox"><span>Who handles day-to-day site updates after launch?</span></label></li>
+  </ul></div>
+</section>
+
+<section id="mls">
+  <h2>MLS PIN &amp; IDX</h2>
+  <p class="intro">What the MLS allows, what it costs, and which WordPress-compatible providers fit.</p>
+
+  <h3>Data access facts <span class="tag t-ver">Verified</span></h3>
+  <ul class="clean">
+    <li>MLS PIN is a RESO Charter Member, certified for RESO Web API Server Core 2.0.0 and Data Dictionary 1.7. RETS is legacy; build on the RESO Web API.</li>
+    <li>Only the brokerage can obtain data access. The broker of record signs the agreement, then credentials are issued through Bridge Interactive (bridgedataoutput.com).</li>
+    <li>Free options also exist: framed Pinergy IDX links and a manual IDX download.</li>
+    <li>MLS PIN data services contact: Missy Caissie, dataservices@mlspin.com, 800-695-3000 ext. 7112.</li>
+  </ul>
+
+  <h3>Display rules the build must enforce <span class="tag t-ver">Verified</span></h3>
+  <div class="cols">
+    <div class="panel"><h4>Content</h4><ul>
+      <li>Public IDX shows only active and sold listings (VOW may add under agreement)</li>
+      <li>Listing office and listing agent named on every listing</li>
+      <li>No modified data; only fields permitted in Attachment C</li>
+      <li>Honor broker opt-outs</li>
+      <li>No MLS PIN logos in advertising</li>
+    </ul></div>
+    <div class="panel"><h4>Site &amp; data handling</h4><ul>
+      <li>All listing data refreshed at least every 3 days</li>
+      <li>Cached listings updated or removed within 3 days of a change</li>
+      <li>MLS PIN disclaimer on every screen with listing data</li>
+      <li>Firm name, office address, phone, towns served, and a privacy policy on the site</li>
+    </ul></div>
+  </div>
+
+  <div class="callout rec">
+    <strong class="h">Market statistics are allowed</strong>
+    <p>Section 11.0 lets you publish aggregated figures like median price, days on market and market share, as long as individual listings (other than your own) aren't exposed and the MLS PIN attribution notice with dates and geography is included. This is the legal basis for original market reports.</p>
+  </div>
+
+  <h3>IDX provider comparison</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Option</th><th>Cost</th><th>SEO</th><th>Best for</th><th>Watch out for</th></tr></thead>
+    <tbody>
+      <tr class="pick"><td>Showcase IDX</td><td>~$85–$95/mo</td><td>Strong: prerendered listing pages on your domain</td><td>SEO-first hosted launch</td><td>Recent acquisition raised support concerns</td></tr>
+      <tr class="pick"><td>iHomefinder</td><td>Quote only</td><td>Good: market pages on your domain</td><td>Well-rounded team option; used by Central MA competitors</td><td>No public pricing <span class="tag t-conf">Confirm</span></td></tr>
+      <tr><td>IDX Broker (IMPress)</td><td>~$60–$149/mo</td><td>Weaker: much runs on a vendor subdomain</td><td>Long track record</td><td>Support widely criticized</td></tr>
+      <tr><td>SimplyRETS</td><td>~$49/mo</td><td>Depends on your front end</td><td>Developer-built search</td><td>You build the UI</td></tr>
+      <tr><td>MLSImport</td><td>~$49/mo per site + MLS fee</td><td>Strong: listings are native WP posts</td><td>Ownership; posts persist after cancel</td><td>You carry the 3-day refresh and purge burden</td></tr>
+      <tr><td>Realtyna / WPL</td><td>Varies</td><td>Good</td><td>Plugin-based builds</td><td>Plugin complexity</td></tr>
+      <tr><td>Custom RESO build</td><td>$100/mo feed + dev time</td><td>Maximum control</td><td>Long-term ownership</td><td>Highest build and maintenance cost</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:.88rem;color:var(--ink-soft)">Highlighted rows are the recommended launch candidates. <span class="tag t-rec">Recommendation</span></p>
+</section>
+
+<section id="architecture">
+  <h2>Recommended architecture</h2>
+  <p class="intro">WordPress stays the source of truth for everything that builds value over time. Everything else connects through APIs and webhooks.</p>
+
+  <div class="flow" aria-label="Data flow">
+    <span class="own">WordPress</span><i>→</i>
+    <span>MLS PIN / IDX</span><i>→</i>
+    <span class="own">Forms &amp; chatbot</span><i>→</i>
+    <span>Follow Up Boss</span><i>→</i>
+    <span>Email &amp; SMS</span><i>→</i>
+    <span>Cloud CMA</span><i>→</i>
+    <span class="own">Analytics</span><i>→</i>
+    <span class="own">AI assistant</span><i>→</i>
+    <span>Automation</span><i>→</i>
+    <span>Agent dashboards</span>
+  </div>
+  <p class="flow-key">Green = owned by the group. Grey = rented service.</p>
+
+  <div class="cols">
+    <div class="panel"><h4>Own in WordPress</h4><ul>
+      <li>Brand, domain, all content and SEO</li>
+      <li>Town, community and neighborhood pages</li>
+      <li>Agent profiles and schema</li>
+      <li>Market reports and testimonials</li>
+      <li>Lead forms and first-party analytics</li>
+      <li>The AI assistant's knowledge base</li>
+    </ul></div>
+    <div class="panel"><h4>Rent and integrate</h4><ul>
+      <li>MLS search and listing rendering</li>
+      <li>CRM, dialer and texting</li>
+      <li>CMA generation and valuation data</li>
+      <li>Email and SMS delivery</li>
+    </ul></div>
+  </div>
+
+  <div class="callout conf">
+    <strong class="h">Lock-in to avoid</strong>
+    <p>All-in-one platforms like BoldTrail and Lofty host the site and listings themselves. Cancel and both disappear. Prefer tools that export cleanly, like Follow Up Boss and MLSImport.</p>
+  </div>
+</section>
+
+<section id="datamodel">
+  <h2>WordPress data model</h2>
+  <p class="intro">Built so adding an agent or a town is data entry, not a rebuild. <span class="tag t-rec">Recommendation</span></p>
+
+  <h3>Content types</h3>
+  <ul class="clean">
+    <li><strong>Custom post types:</strong> agent, community, market report, testimonial, case study, guide.</li>
+    <li><strong>Geography taxonomy:</strong> hierarchical, state → county → city or town → neighborhood.</li>
+    <li><strong>Listings:</strong> leave them in the IDX provider when using hosted IDX. A custom RESO build stores them in a dedicated table with scheduled refresh and purge jobs.</li>
+  </ul>
+
+  <h3>How agents work</h3>
+  <p>Each agent is two linked records. A public <strong>agent post</strong> holds the profile, bio, headshot, specialties, service areas, reviews, social links, schema and SEO fields. A <strong>WordPress user</strong> holds login, role and dashboard access. User meta connects the two, so a new agent gets <code>/agents/firstname-lastname/</code> with no code changes.</p>
+
+  <h3>URL structure</h3>
+<pre class="tree">/ma/
+/ma/worcester/
+/ma/worcester/homes-for-sale/
+/ma/worcester/condos/
+/ma/worcester/multifamily/
+/ma/worcester/market-report/
+/ma/shrewsbury/ …
+/agents/brandon-oberdorfer/
+/agents/kait-oberdorfer/
+/buyers/  /sellers/  /investors/  /relocation/</pre>
+  <p>The state prefix keeps room for New Hampshire and Rhode Island later, and the hierarchy creates clear topic clusters for search engines.</p>
+</section>
+
+<section id="crm">
+  <h2>CRM</h2>
+  <p class="intro">Keep the CRM external. WordPress remains the source for content and first-party analytics.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>CRM</th><th>2026 pricing</th><th>Type</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr class="pick"><td>Follow Up Boss</td><td>$69/user/mo, or $58 billed annually. Calling add-on $39. Pro $499 (10 users).</td><td>Best-of-breed hub</td><td>Open API, 250+ integrations, best portability. Zillow-owned. <span class="tag t-rec">Pick</span></td></tr>
+      <tr><td>Lofty</td><td>~$449/mo + $299–$1,499 setup</td><td>All-in-one</td><td>Strong native AI and IDX; lock-in</td></tr>
+      <tr><td>BoldTrail (kvCORE)</td><td>Quote only; reported $499+/mo</td><td>All-in-one</td><td>Enterprise-oriented</td></tr>
+      <tr><td>Sierra Interactive</td><td>$299.95/mo (1 user)</td><td>IDX + CRM</td><td>Excellent IDX</td></tr>
+      <tr><td>Real Geeks</td><td>$399/mo (2 users) + setup</td><td>All-in-one</td><td>Popular with small teams</td></tr>
+      <tr><td>GoHighLevel</td><td>$97 / $297 / $497 per month</td><td>Automation platform</td><td>You could white-label and resell</td></tr>
+      <tr><td>FluentCRM, Groundhogg, Jetpack CRM</td><td>Low</td><td>WordPress-native</td><td>Full data ownership; weak real-estate features and mobile apps</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="cma">
+  <h2>CMA &amp; home valuation</h2>
+  <p class="intro">An instant estimate captures the lead. A licensed agent produces the actual CMA.</p>
+
+  <div class="cols">
+    <div class="panel"><h4>AVM (automated estimate)</h4><ul>
+      <li>An algorithm's number from public and MLS data</li>
+      <li>Fine as a clearly labeled ballpark for lead capture</li>
+      <li>Must never be called a CMA</li>
+    </ul></div>
+    <div class="panel"><h4>CMA (agent opinion)</h4><ul>
+      <li>A licensed agent's professional opinion using chosen comps</li>
+      <li>Always reviewed and delivered by Brandon or Kait</li>
+    </ul></div>
+  </div>
+
+  <h3>Home value workflow</h3>
+  <ol class="steps">
+    <li>Visitor enters their address <span class="tag t-rec">Automated</span></li>
+    <li>Site shows a labeled estimate range <span class="tag t-rec">Automated</span></li>
+    <li>Lead created in the CRM with source attached <span class="tag t-rec">Automated</span></li>
+    <li>Lead routed to Brandon or Kait with a notification <span class="tag t-rec">Automated</span></li>
+    <li>Agent builds and reviews the CMA in Cloud CMA <span class="tag t-conf">Human</span></li>
+    <li>Personalized CMA delivered <span class="tag t-conf">Human</span></li>
+    <li>Follow-up sequence starts <span class="tag t-rec">Automated</span></li>
+  </ol>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Tool</th><th>Cost</th><th>Role</th></tr></thead>
+    <tbody>
+      <tr class="pick"><td>Cloud CMA</td><td>~$35–$70/mo; team ~$125. Listed as an MLS PIN member benefit. <span class="tag t-conf">Confirm</span></td><td>Polished CMA reports with direct MLS integration</td></tr>
+      <tr><td>RPR</td><td>Free for NAR members</td><td>Deep parcel and public-record data</td></tr>
+      <tr><td>Homebot</td><td>~$25–$59/mo</td><td>Monthly home-value emails to past clients</td></tr>
+      <tr><td>HouseCanary</td><td>Enterprise</td><td>AVM API for a custom estimate tool</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="ai">
+  <h2>AI assistant</h2>
+  <p class="intro">A chatbot that answers from the site's own content and live listing data, and hands off to a person whenever it's unsure. Add it in Phase 7, after the content exists.</p>
+
+  <h3>How it works <span class="tag t-rec">Recommendation</span></h3>
+  <p>Retrieval over WordPress content, a curated knowledge base, and live IDX queries, using OpenAI or a comparable API. A request like "3-bedroom homes in Shrewsbury under $750,000" becomes IDX search parameters, and results come straight from the feed.</p>
+
+  <div class="callout risk">
+    <strong class="h">Guardrails that can't be optional</strong>
+    <p>Listing facts, prices and availability come only from live IDX data, with a link. No legal, mortgage or tax advice; hand those to a person. No characterizing neighborhoods in fair-housing-sensitive ways. Say "I don't know" and offer an agent. Disclose that it's AI, log every conversation, and rate-limit and spend-cap the endpoint.</p>
+  </div>
+
+  <h3>Lead qualification</h3>
+  <p>The assistant can detect intent, classify buyer, seller or investor, collect contact details, timeframe and budget, create the CRM lead with a summary, and notify the right agent. Anything resembling advice or a commitment waits for a human.</p>
+
+  <h3>Future AI opportunities, ranked</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Opportunity</th><th>Value</th><th>Difficulty</th><th>Risk</th></tr></thead>
+    <tbody>
+      <tr class="pick"><td>Listing description drafts</td><td>High</td><td>Low</td><td>Medium; human review</td></tr>
+      <tr class="pick"><td>Social post drafts</td><td>High</td><td>Low</td><td>Low</td></tr>
+      <tr class="pick"><td>Market report drafts</td><td>High</td><td>Medium</td><td>Low with verified data</td></tr>
+      <tr><td>Natural-language property search</td><td>High</td><td>High</td><td>Medium; MLS licensing</td></tr>
+      <tr><td>CMA summaries</td><td>Medium</td><td>Medium</td><td>Medium; agent review</td></tr>
+      <tr><td>AI lead scoring</td><td>Medium</td><td>Medium</td><td>Low</td></tr>
+      <tr><td>Voice AI receptionist</td><td>Medium</td><td>High</td><td>Medium</td></tr>
+    </tbody>
+  </table></div>
+  <p style="font-size:.88rem;color:var(--ink-soft)">Highlighted rows are the ones to do first.</p>
+</section>
+
+<section id="hosting">
+  <h2>Hosting, security &amp; speed</h2>
+  <p class="intro">Cloudways on DigitalOcean handles this comfortably. Heavy AI and background jobs should move off the web server as usage grows.</p>
+
+  <h3>Scaling plan</h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Stage</th><th>Server</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td>Launch</td><td>2GB, ~$22/mo</td><td>Add Redis (~$12/mo) and free Cloudflare</td></tr>
+      <tr><td>10K–50K visits/mo</td><td>4GB, ~$54/mo</td><td>Object Cache Pro included at this size</td></tr>
+      <tr><td>100K+ visits/mo</td><td>8GB+ or autoscaling</td><td>Autoscaling ~$90/mo at 100K visits; move AI and queues to separate services</td></tr>
+    </tbody>
+  </table></div>
+  <p>Replace WP-Cron with a real system cron, and run listing imports and alerts through a job queue.</p>
+
+  <h3>Security checklist</h3>
+  <div class="cols">
+    <div class="panel"><h4>Perimeter</h4><ul>
+      <li>Cloudflare WAF, bot protection, rate limiting</li>
+      <li>Wordfence or equivalent malware scanning</li>
+      <li>Hardened REST API endpoints</li>
+      <li>Auth, rate limits and spend caps on AI endpoints</li>
+    </ul></div>
+    <div class="panel"><h4>Data &amp; access</h4><ul>
+      <li>2FA on every login; least-privilege agent roles</li>
+      <li>API keys and MLS/CRM credentials in environment secrets, never the database or repo</li>
+      <li>Automated off-site backups and audit logging</li>
+      <li>Supports the 201 CMR 17.00 security program</li>
+    </ul></div>
+  </div>
+
+  <h3>Performance budget</h3>
+  <p>LCP under 2.5 seconds, INP under 200 ms, CLS under 0.1. Lazy-load galleries and maps, defer chat and tracking scripts, serve AVIF/WebP through a CDN, and prefer prerendered listing pages.</p>
+
+  <h3>Accessibility (WCAG 2.2 AA)</h3>
+  <ul class="clean">
+    <li>Search filters and maps work fully by keyboard</li>
+    <li>Modals trap and return focus correctly</li>
+    <li>Alt text on every property photo; captions and transcripts on video and tours</li>
+    <li>Carousels can be paused and navigated by keyboard</li>
+    <li>Forms have visible labels and specific error messages</li>
+    <li>The chatbot announces new messages to screen readers</li>
+  </ul>
+</section>
+
+<section id="seo">
+  <h2>SEO, GEO &amp; structured data</h2>
+  <p class="intro">Location pages still work in 2026, but only when each one carries something real.</p>
+
+  <div class="callout risk">
+    <strong class="h">Thin templates get punished</strong>
+    <p>Google's March 2026 enforcement against scaled content cut traffic 50–80% on low-value programmatic sites. A town page that only swaps the town name is a liability. Each needs local statistics, agent commentary, named neighborhoods, and school and commute facts.</p>
+  </div>
+
+  <h3>Content model</h3>
+  <p>Each town is a hub linking to property-type pages, a monthly market report and neighborhood guides, all cross-linked.</p>
+
+  <h3>Showing up in AI answers</h3>
+  <ul class="clean">
+    <li>Question-style headings followed by a direct answer</li>
+    <li>Original monthly statistics that others cite</li>
+    <li>Buyer, seller and neighborhood guides; a glossary of Massachusetts terms, property tax and mortgage basics</li>
+    <li>Videos with transcripts</li>
+    <li>Consistent name, address and phone, with brokerage attribution everywhere</li>
+    <li>Entity links: brokerage → Brandon and Kait → service areas, reviews, credentials, press and social profiles</li>
+  </ul>
+
+  <h3>Schema in 2026 <span class="tag t-ver">Verified</span></h3>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Schema</th><th>Google rich result?</th><th>Still worth it?</th></tr></thead>
+    <tbody>
+      <tr><td>RealEstateListing / RealEstateAgent</td><td>No property rich result exists</td><td>Yes, for entity clarity and AI understanding</td></tr>
+      <tr><td>FAQPage</td><td>Discontinued May 7, 2026</td><td>Yes, still helps Google understand the page</td></tr>
+      <tr><td>HowTo</td><td>Removed</td><td>Low priority</td></tr>
+      <tr><td>Review / AggregateRating</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>VideoObject, BreadcrumbList</td><td>Yes</td><td>Yes</td></tr>
+      <tr><td>Organization / LocalBusiness</td><td>Knowledge panel signals</td><td>Yes</td></tr>
+    </tbody>
+  </table></div>
+  <p>Generate schema automatically from the agent, community, report and article fields rather than hand-writing it.</p>
+
+  <h3>Worcester market snapshot <span class="tag t-ver">Verified</span></h3>
+  <div class="cols">
+    <div class="panel"><h4>Worcester County</h4><ul>
+      <li>Median sale price $494K over three months through May 2026, down 3.0% year over year</li>
+      <li>About 21 days on market (Redfin)</li>
+    </ul></div>
+    <div class="panel"><h4>City of Worcester</h4><ul>
+      <li>Median $450,000, up 4.7% year over year</li>
+      <li>About 24 days on market; very competitive seller's market (Q1 2026)</li>
+    </ul></div>
+  </div>
+</section>
+
+<section id="leads">
+  <h2>Lead generation</h2>
+  <p class="intro">Home value and listing alerts convert best. Put both site-wide and on every town page. <span class="tag t-rec">Recommendation</span></p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Audience</th><th>Primary offer</th><th>Where it lives</th></tr></thead>
+    <tbody>
+      <tr><td>Buyers</td><td>Search homes, save search, listing alerts</td><td>Header, town pages, listing pages</td></tr>
+      <tr><td>Sellers</td><td>Get home value, then get a CMA</td><td>Header, seller pages, market reports</td></tr>
+      <tr><td>First-time buyers</td><td>Buyer guide download</td><td>Guides and financing content</td></tr>
+      <tr><td>Investors &amp; multifamily</td><td>Market report, multifamily alerts</td><td>/multifamily/ pages</td></tr>
+      <tr><td>Relocation</td><td>Commute-radius search, relocation guide</td><td>/relocation/</td></tr>
+      <tr><td>Luxury &amp; downsizing</td><td>Talk to Brandon or Kait</td><td>Specialty landing pages</td></tr>
+      <tr><td>Expired &amp; FSBO</td><td>Get home value</td><td>Targeted landing pages and outreach</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Automation</h3>
+  <p>Instant new-lead response, saved-search and price-drop alerts, buyer and seller nurture, open house follow-up, monthly market reports, past-client anniversaries and review requests. Email must meet CAN-SPAM (working unsubscribe, physical address). Texting requires consent, opt-out handling and A2P 10DLC registration first.</p>
+
+  <h3>Measuring it</h3>
+  <p>GA4 plus Plausible or Matomo, with server-side tracking. Pass source and UTM data into the CRM when the lead is created, so every closed deal traces back to the page and channel that produced it. Track speed-to-lead, chatbot use, CMA and showing requests, and lead-to-client conversion.</p>
+</section>
+
+<section id="content">
+  <h2>Content, reviews &amp; Google Business Profile</h2>
+
+  <h3>What compounds</h3>
+  <p>Monthly town market reports come first: Worcester and Shrewsbury, then Westborough, Grafton, Holden, Auburn, Millbury, Northborough and Southborough. Neighborhood guides, buyer and seller guides, and property-tax and school explainers follow. <span class="tag t-rec">Recommendation</span></p>
+
+  <h3>Google Business Profile</h3>
+  <p>The brokerage and each individually licensed agent can qualify. A team that isn't a legal entity generally shouldn't have its own profile, since that risks duplicate-listing suspension. Use real addresses, consistent details, and no keywords stuffed into names. <span class="tag t-conf">Confirm</span></p>
+
+  <h3>Reviews</h3>
+  <p>Pull reviews from Google, Zillow, Realtor.com and Facebook through their permitted methods, and request them automatically after closing. FTC rules forbid fake or undisclosed incentivized reviews and misleading selection.</p>
+
+  <h3>Social</h3>
+  <p>Syndicate new content and listings to Facebook, Instagram, LinkedIn, YouTube and Google Business Profile through Zapier, Make or platform APIs. Listing videos must follow MLS image rules.</p>
+</section>
+
+<section id="competitors">
+  <h2>Central Massachusetts competitors</h2>
+  <p class="intro">Teams worth studying, and the gaps they leave open.</p>
+  <ul class="clean">
+    <li><strong>The Christopher Group at Real Broker</strong> — Worcester to Boston, iHomefinder IDX, strong production story</li>
+    <li><strong>Champion Real Estate</strong> — iHomefinder, community pages for Rutland, Leicester and Paxton</li>
+    <li><strong>The Riel Estate Team, The Jarboe Group, Lamacchia Realty, Greene Realty Group, Thrive Real Estate</strong> (Shrewsbury)</li>
+  </ul>
+  <div class="callout rec">
+    <strong class="h">Gaps to exploit</strong>
+    <p>Most rely on thin template community pages that are exposed to the 2026 updates. Few publish original monthly town-level data, deep guides built for AI answers, a well-guarded assistant, or fast Core Web Vitals.</p>
+  </div>
+</section>
+
+<section id="compliance">
+  <h2>Legal &amp; compliance</h2>
+  <p class="intro">What the platform must account for, and what belongs with the attorney rather than the developer.</p>
+
+  <h3>Team advertising <span class="tag t-risk">Risk</span></h3>
+  <p>Teams aren't legally recognized in Massachusetts. Every ad must include the broker's name, salespersons can't advertise under their own name alone, and team names can't include "realty," "real estate," "agency," "associates" or "advisors." The broker approves name, logo and domain.</p>
+
+  <h3>Privacy</h3>
+  <ul class="clean">
+    <li><strong>In force now:</strong> 201 CMR 17.00 (written security program) and M.G.L. c. 93H breach notification. <span class="tag t-ver">Verified</span></li>
+    <li><strong>Pending:</strong> the Massachusetts Data Privacy Act. The Senate passed its version in September 2025 and the House passed H.5479 on June 4, 2026, with a private right of action for large data holders. A conference committee is reconciling them. Build consent and data-rights handling now. <span class="tag t-conf">Confirm</span></li>
+  </ul>
+
+  <h3>Fair housing</h3>
+  <p>HUD's April 24, 2026 letter says agents don't violate the Fair Housing Act merely by discussing crime prevalence or school quality. <span class="tag t-ver">Verified</span> Steering is still illegal. On neighborhood pages, present objective, sourced data consistently across every town, avoid words like "safe," "good" or "family-friendly," and never reference race, religion, national origin or familial status.</p>
+
+  <h3>Texting</h3>
+  <p>A2P 10DLC brand registration (~$4 sole proprietor, ~$48+ standard), campaign registration (~$15–17 once, then $1.50–$10/mo), a $50 T-Mobile activation, and carrier surcharges of $0.003–$0.005 per message. Unregistered traffic gets blocked. <span class="tag t-ver">Verified</span></p>
+
+  <div class="callout conf">
+    <strong class="h">For the principal broker to review, not you</strong>
+    <p>Team name, logo and domain. Advertising disclaimers and listing attribution wording. Dual-agency consent. Adequacy of the security program. RESPA implications of partner referrals. All commission and compensation flows. The neighborhood content approach under state law.</p>
+  </div>
+</section>
+
+<section id="buildbuy">
+  <h2>Build vs buy</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Component</th><th>Decision</th><th>Why</th></tr></thead>
+    <tbody>
+      <tr><td>WordPress theme</td><td><span class="pill p-build">Build</span></td><td>Brand, performance and SEO ownership</td></tr>
+      <tr><td>Agent system</td><td><span class="pill p-build">Build</span></td><td>The foundation for adding agents without a rebuild</td></tr>
+      <tr><td>IDX</td><td><span class="pill p-buy">Buy</span> then <span class="pill p-build">Build</span></td><td>Hosted now; custom once the brokerage feed is confirmed and traffic justifies it</td></tr>
+      <tr><td>MLS API</td><td><span class="pill p-int">Integrate</span></td><td>MLS PIN RESO Web API through Bridge</td></tr>
+      <tr><td>Property search</td><td><span class="pill p-buy">Buy</span> then <span class="pill p-build">Build</span></td><td>Provider search first; natural-language search later</td></tr>
+      <tr><td>CRM</td><td><span class="pill p-buy">Buy</span></td><td>Follow Up Boss; don't reinvent it</td></tr>
+      <tr><td>CMA</td><td><span class="pill p-buy">Buy</span></td><td>Cloud CMA, possibly an MLS PIN benefit</td></tr>
+      <tr><td>Email</td><td><span class="pill p-int">Integrate</span></td><td>FluentCRM or CRM-native</td></tr>
+      <tr><td>SMS</td><td><span class="pill p-int">Integrate</span></td><td>After A2P 10DLC registration</td></tr>
+      <tr><td>AI assistant</td><td><span class="pill p-build">Build</span></td><td>Grounded in owned content; a real differentiator</td></tr>
+      <tr><td>Analytics</td><td><span class="pill p-int">Integrate</span></td><td>GA4, Plausible or Matomo, server-side tracking</td></tr>
+      <tr><td>Market reports</td><td><span class="pill p-build">Build</span></td><td>First-party authority under Section 11.0</td></tr>
+      <tr><td>User accounts &amp; saved searches</td><td><span class="pill p-buy">Buy</span></td><td>The IDX provider owns listing and refresh logic</td></tr>
+      <tr><td>Agent dashboard</td><td><span class="pill p-defer">Defer</span></td><td>CRM views until about 5–8 agents</td></tr>
+      <tr><td>Marketing automation</td><td><span class="pill p-int">Integrate</span></td><td>CRM plus FluentCRM</td></tr>
+      <tr><td>Social automation</td><td><span class="pill p-int">Integrate</span></td><td>Zapier or Make with platform APIs</td></tr>
+      <tr><td>Review management</td><td><span class="pill p-int">Integrate</span></td><td>Aggregate via permitted APIs; FTC-compliant display</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="costs">
+  <h2>Monthly technology costs</h2>
+  <p class="intro">Tools and infrastructure only; your fees are separate. Quote-only vendors are estimates.</p>
+  <div class="tiers">
+    <div class="tier">
+      <h4>Lean launch</h4>
+      <p class="amt">$250–$350</p>
+      <p class="yr">per month · ~$3,000–$4,200 a year</p>
+      <ul>
+        <li>Showcase IDX or $100 MLS feed</li>
+        <li>Follow Up Boss, 1 seat ($69)</li>
+        <li>Cloud CMA (~$35 or MLS-provided)</li>
+        <li>Cloudways 2GB ($22)</li>
+        <li>Cloudflare free, Plausible or GA4</li>
+        <li>SMS: ~$70 setup + ~$15/mo if used</li>
+      </ul>
+    </div>
+    <div class="tier mid">
+      <h4>Professional growth</h4>
+      <p class="amt">$600–$1,200</p>
+      <p class="yr">per month · ~$7,200–$14,400 a year</p>
+      <ul>
+        <li>iHomefinder or Showcase IDX</li>
+        <li>Follow Up Boss, 2–3 seats + calling</li>
+        <li>Cloud CMA team plan</li>
+        <li>Cloudways 4GB ($54), Cloudflare Pro ($20)</li>
+        <li>Registered SMS</li>
+        <li>Premium plugins (SEO, fields, security)</li>
+      </ul>
+    </div>
+    <div class="tier">
+      <h4>Advanced AI &amp; automation</h4>
+      <p class="amt">$1,500–$3,000</p>
+      <p class="yr">per month · ~$18,000–$36,000 a year</p>
+      <ul>
+        <li>Everything in growth</li>
+        <li>AI API usage ($100–$500)</li>
+        <li>Voice receptionist</li>
+        <li>GoHighLevel white-label ($297–$497)</li>
+        <li>Advanced analytics, autoscaling hosting</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="roadmap">
+  <h2>Development roadmap</h2>
+  <p class="intro">Phases in dependency order. Filled circles are the phases everything else waits on.</p>
+  <ol class="road">
+    <li class="crit"><span class="n">0</span><h4>Discovery &amp; MLS approval <span class="effort">Low effort</span></h4><p>Broker signs MLS PIN agreement, branding and legal review, asset ownership agreed.</p></li>
+    <li><span class="n">1</span><h4>Brand &amp; site foundation <span class="effort">Medium</span></h4><p>Custom theme, core pages, hosting, security, analytics.</p></li>
+    <li class="crit"><span class="n">2</span><h4>Agent architecture <span class="effort">Medium</span></h4><p>Agent post type, geography taxonomy, user linking, schema.</p></li>
+    <li><span class="n">3</span><h4>IDX &amp; property search <span class="effort">Medium–high</span></h4><p>Provider integration or custom RESO; disclaimer, attribution, 3-day refresh. Needs Phase 0.</p></li>
+    <li><span class="n">4</span><h4>Lead capture &amp; CRM <span class="effort">Medium</span></h4><p>Forms, Follow Up Boss webhooks, routing, instant response.</p></li>
+    <li><span class="n">5</span><h4>Local SEO &amp; content system <span class="effort">Medium</span></h4><p>Town hubs, market report templates, AI-answer structure.</p></li>
+    <li><span class="n">6</span><h4>CMA &amp; home value <span class="effort">Low–medium</span></h4><p>Estimate tool and Cloud CMA workflow.</p></li>
+    <li><span class="n">7</span><h4>AI assistant <span class="effort">High</span></h4><p>Retrieval, guardrails, human handoff.</p></li>
+    <li><span class="n">8</span><h4>Automation <span class="effort">Medium</span></h4><p>Nurture sequences, alerts, review requests, SMS after registration.</p></li>
+    <li><span class="n">9</span><h4>Advanced analytics <span class="effort">Medium</span></h4><p>Server-side tracking, attribution, dashboards.</p></li>
+    <li><span class="n">10</span><h4>New agents &amp; markets <span class="effort">Scales on Phase 2</span></h4><p>Onboard agents, add town clusters and other states, partner ecosystem.</p></li>
+  </ol>
+
+  <h3>When to change course</h3>
+  <ul class="clean">
+    <li><strong>Broker won't sign the MLS agreement:</strong> go hosted, and favor Showcase IDX for its prerendered pages.</li>
+    <li><strong>Organic traffic passes ~50K a month:</strong> move to 4GB+ hosting and evaluate the custom RESO build.</li>
+    <li><strong>Agent count passes ~5–8:</strong> build the WordPress agent dashboard and revisit all-in-one CRMs.</li>
+  </ul>
+</section>
+
+<section id="pricing">
+  <h2>Your pricing</h2>
+  <p class="intro">Separate the one-time build from recurring work, and cap included hours. <span class="tag t-rec">Recommendation</span></p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Service</th><th>Structure</th><th>Range</th></tr></thead>
+    <tbody>
+      <tr><td>Discovery (Phase 0)</td><td>Fixed, paid up front</td><td>$1,500–$3,000</td></tr>
+      <tr><td>Initial build</td><td>Fixed scope, paid 40 / 30 / 30</td><td>$12,000–$30,000</td></tr>
+      <tr><td>Hosting, security &amp; maintenance</td><td>Monthly retainer with capped hours</td><td>$300–$800/mo</td></tr>
+      <tr><td>Growth, SEO, content &amp; development</td><td>Tiered monthly retainer</td><td>$1,000–$4,000/mo</td></tr>
+      <tr><td>AI &amp; automation add-ons</td><td>Per project, or usage plus margin</td><td>Varies</td></tr>
+    </tbody>
+  </table></div>
+  <div class="callout risk">
+    <strong class="h">No commission or per-deal pricing</strong>
+    <p>Massachusetts license law bars paying unlicensed parties based on real estate transactions or commissions. Bill as a service vendor: flat fees, retainers or usage. Have the broker confirm any performance-based structure.</p>
+  </div>
+</section>
+
+<section id="caveats">
+  <h2>Open questions &amp; caveats</h2>
+  <ul class="clean">
+    <li>Whether the $100 brokerage feed allows a fully custom public IDX, and the exact local-storage terms. Get MLS PIN's brokerage summary PDF before committing to a custom build. <span class="tag t-conf">Confirm</span></li>
+    <li>iHomefinder, BoldTrail and Lofty pricing are third-party estimates. <span class="tag t-conf">Confirm</span></li>
+    <li>The Massachusetts Data Privacy Act isn't law yet; final obligations and dates may shift.</li>
+    <li>HUD's April 2026 letter reflects the current federal posture; state law and NAR ethics still call for consistent, objective treatment.</li>
+    <li>Schema won't produce property rich results; treat it as entity infrastructure, not a ranking tactic.</li>
+  </ul>
+</section>
+
+<section id="mybuild">
+  <div class="closing">
+    <h2>What I'd build if this were my business</h2>
+    <p>A <strong>custom WordPress block theme</strong> on Cloudways/DigitalOcean as the owned hub for brand, content, SEO and agents.</p>
+    <p><strong>Showcase IDX at launch</strong> for listing pages on the group's domain, with a planned move to a <strong>custom RESO build on the $100 brokerage feed</strong> once traffic and revenue justify it.</p>
+    <p><strong>Follow Up Boss</strong> connected by webhook, <strong>Cloud CMA</strong> behind a clearly labeled home-value tool, and a <strong>guarded AI assistant</strong> grounded in owned content and live listings.</p>
+    <p><strong>FluentCRM and registered SMS</strong> for automation, <strong>GA4, Plausible and server-side attribution</strong> for measurement, and a <strong>monthly market report engine</strong> starting with Worcester and Shrewsbury as the authority flywheel.</p>
+    <p>Priced as paid discovery, a fixed build, a maintenance retainer and a growth retainer. Never a share of commissions.</p>
+  </div>
+</section>
+
+<footer>
+  Research compiled September 2026 from MLS PIN, mass.gov, HUD, Google Search Central, vendor sites and industry sources. Pricing and regulations change; verify before quoting. Not legal advice; route compliance questions to the principal broker.
+</footer>
+</main>
+</div>
+
+<script>
+(function(){
+  // Scroll spy
+  const links=[...document.querySelectorAll('.toc a')];
+  const map=new Map(links.map(a=>[a.getAttribute('href').slice(1),a]));
+  const obs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.remove('active'));
+        const a=map.get(e.target.id); if(a)a.classList.add('active');
+        const sel=document.getElementById('jump'); if(sel)sel.value='#'+e.target.id;
+      }
+    });
+  },{rootMargin:'-20% 0px -70% 0px'});
+  map.forEach((a,id)=>{const el=document.getElementById(id); if(el)obs.observe(el);});
+
+  // Mobile jump
+  document.getElementById('jump').addEventListener('change',e=>{
+    document.querySelector(e.target.value).scrollIntoView();
+  });
+
+  // Question progress
+  const boxes=[...document.querySelectorAll('.qlist input')];
+  const prog=document.getElementById('qprog');
+  const update=()=>{prog.textContent=boxes.filter(b=>b.checked).length+' of '+boxes.length+' answered';};
+  boxes.forEach(b=>b.addEventListener('change',update)); update();
+  document.getElementById('mustonly').addEventListener('change',e=>{
+    document.body.classList.toggle('must-only',e.target.checked);
+  });
+})();
+</script>
+</body>
+</html>
